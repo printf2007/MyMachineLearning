@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 # A=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 # arr1=np.array(A)
 # print("A=",A)
@@ -231,14 +232,69 @@ import numpy as np
 # A=np.array([[0,1,0],[1/2**0.5,0,1/2**0.5],[-1/2**0.5,0,1/2**0.5]])
 # print("AxA.T=\n",np.round(A.dot(A.T)))
 
-A=np.array([[1,2,1],[2,-1,3],[3,1,2]])
-B=np.array([[7],[7],[18]])
-C=np.linalg.solve(A,B)
-print("A和B组成的线性方程级的解为:\n",C)
+# A=np.array([[1,2,1],[2,-1,3],[3,1,2]])
+# B=np.array([[7],[7],[18]])
+# C=np.linalg.solve(A,B)
+# print("A和B组成的线性方程级的解为:\n",C)
+#
+# inverse_A=np.linalg.inv(A)
+# result=inverse_A.dot(B)
+# print("使用逆矩阵求A和B组成的线性方程级的解为:\n",result)
+# print("inverse_A=\n",inverse_A)
 
-inverse_A=np.linalg.inv(A)
-result=inverse_A.dot(B)
-print("使用逆矩阵求A和B组成的线性方程级的解为:\n",result)
+
+
+#读取文件
+# dataset=pd.read_excel("C:/Users/allenwang/PycharmProjects/MyMachineLearning/pythonProject/data/Folds5x2_pp.xlsx")
+# #将数据转化成矩阵的形式
+# data=np.array(dataset)
+# #获取数据和标签
+# X_data=data[:,:-1]
+# Y_data=data[:,-1]
+# print("数据集的样本数为%d,列数为%d"%(data.shape[0],data.shape[1]))
+# #使用Numpy获取数据集的第0个样本
+# data_0=X_data[0]
+# print("数据集的第0个样本为：",data_0)
+# print("X_data[1,0]为：",X_data[1,0])
+# print("输出所有列：",dataset.columns)
+
+# 定义矩阵 A
+# A = np.array([[1, 1, 1],
+#               [2, -4, 2]])
+# print(pd.DataFrame(A))
+# A=np.arange(1,11,1)
+# print("A=\n",A)
+# print("A.reshape(3,2)=\n",A.reshape(1,-1))
+# print("A.shape:",A.shape)
+# print("A.type",type(A))
+# print("A.reshape(2,-1):\n",A.reshape(2,-1))
+#
+# B=np.logspace(0,6,3,base=2)
+# print("B=\n",B)
+
+# A=np.array([[4,2],[1,5]])
+# print("A=\n",A)
+# eig_val,eig_vex=np.linalg.eig(A)
+# print("A的特征值为",eig_val)
+# print("A的特征向量为",eig_vex)
+# sigma=np.diag(eig_val**3)
+# print("sigma=\n",sigma)
+# C=eig_vex.dot(sigma.dot(np.linalg.inv(eig_vex)))
+# print("C=\n",C)
+# D=A.dot(A.dot(A))
+# print("D=\n",D)
+# print("C与D是否相同：",np.allclose(C,D))
+# print("A的三次方为：",C)
+from numpy import linalg as lg
+A=[[1,5,7,6,1],[2,1,10,4,4],[3,6,7,5,2]]
+A=np.array(A)
+B=A.dot(A.T)
+C=A.T.dot(A)
+eig_val1,eig_vex1=lg.eig(B)
+eig_val2,eig_vex2=lg.eig(C)
+print("B\n",B)
+print("C\n",C)
+print("eig_vex1\n",eig_vex1)
 
 
 
