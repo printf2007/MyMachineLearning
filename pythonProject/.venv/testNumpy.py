@@ -295,6 +295,7 @@ eig_val2,eig_vex2=lg.eig(C)
 print("B\n",B)
 print("C\n",C)
 print("eig_vex1\n",eig_vex1)
+print("eig_vex2\n",eig_vex2)
 
 
 
