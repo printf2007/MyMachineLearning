@@ -1,5 +1,6 @@
 from PIL import Image
 import numpy as np
+import os
 '''
 函数功能：SVD并还原压缩后的数据。
 参数说明：data代表原始矩阵percent代表奇异值总和的百分比
@@ -49,11 +50,15 @@ def rebuild_img(filename,p,get_approx_SVD):
     G = get_approx_SVD(G0,p)#对绿色进行SVD还原
     B = get_approx_SVD(B0,p)#对蓝色进行SVD还原
     I = np.stack((R, G, B), 2)
-    Image.fromarray(I).save(str(p*100)+".jpg")#保存图片
-    img=Image.open(str(p * 100) + ".jpg", 'r')
+    Image.fromarray(I).save(script_dir+"/../data/"+str(p*100)+".jpg")#保存图片
+    img=Image.open(script_dir+"/../data/"+str(p * 100) + ".jpg", 'r')
     img.show()#显示图片
 
-filename="../data/lenna.bmp"
+
+# 获取当前脚本所在的目录
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# 构建相对于脚本位置的数据文件路径
+filename = os.path.join(script_dir, '..', 'data', 'lenna.bmp')
 # for p in np.arange(0.2,1.2,0.2):
 #     rebuild_img(filename,p,get_approx_SVD1)
 for p in np.arange(0.2, 1.2, 0.2):
